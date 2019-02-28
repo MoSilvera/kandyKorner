@@ -1,0 +1,41 @@
+.title {
+    font-family: cursive;
+    font-size: 60px;
+    animation: rainbow infinite 3s linear;
+}
+
+@keyframes rainbow {
+    0%   {color: red;}
+    12%  {color: orange;}
+    25%  {color: yellow;}
+    37%  {color: green;}
+    50%  {color: turquoise;}
+    62%  {color: blue;}
+    75% {color: indigo;}
+    88% {color: violet;}
+    100% {color: pink;}
+  }
+
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+
+.tiny {
+    width: 100px;
+}
+.candyList {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.oneCandy {
+  padding: 10px;
+  margin: 10px;
+}

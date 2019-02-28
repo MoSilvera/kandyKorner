@@ -1,0 +1,55 @@
+{
+  "stores": [
+    {
+      "id": 1,
+      "name": "Nashville North",
+      "address": "500 Circle Way"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South",
+      "address": "10101 Binary Court"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Smith"
+    },
+    {
+      "id": 2,
+      "name": "Sam Jones"
+    }
+  ],
+  "candyTypes": [
+    {
+      "id": 1,
+      "name": "Chocolate"
+    },
+    {
+      "id": 2,
+      "name": "Sour"
+    },
+    {
+      "id": 3,
+      "name": "Gummies"
+    }
+  ],
+  "candies": [
+    {
+      "id": 1,
+      "name": "Super Sour Yums",
+      "typeId": 2
+    },
+    {
+      "id": 2,
+      "name": "Chocolate Chocolates",
+      "typeId": 1
+    },
+    {
+      "id": 3,
+      "name": "Yummy Gummy Guys",
+      "typeId": 3
+    }
+  ]
+}
