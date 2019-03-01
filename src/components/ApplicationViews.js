@@ -3,7 +3,10 @@ import { Route } from 'react-router-dom'
 import StoreLocations from "./location/StoreLocations"
 import Employees from './employee/Employees';
 import CandyList from './candy/CandyList';
-
+import CandyManager from '../modules/CandyManager'
+import EmployeeManager from '../modules/EmployeeManager'
+import StoreManager from '../modules/StoreManager'
+import CandyTypeManager from '../modules/CanyTypeManager'
 export default class ApplicationViews extends Component {
 
     state = {
@@ -13,12 +16,9 @@ export default class ApplicationViews extends Component {
         candies: []
     }
 
-    candyDelete = (id) => {fetch(`http://localhost:5002/candies/${id}`, {
-        "method": "DELETE"
-    })
-    .then(r => r.json())
-    .then(() => fetch("http://localhost:5002/candies")
-    .then(r => r.json()))
+    candyDelete = (id) => {
+        CandyManager.deleteOne(id)
+        .then(CandyManager.getAll)
     .then(candies => this.setState({candies: candies}))
 
 
@@ -27,20 +27,14 @@ export default class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
 
-        fetch("http://localhost:5002/candies")
-            .then(r => r.json())
-            .then(candies => newState.candies = candies)
-            .then(() => fetch("http://localhost:5002/employees")
-            .then(r => r.json()))
-            .then(employees => newState.employees = employees)
-            .then( () => fetch
-            ("http://localhost:5002/candyTypes")
-            .then(r => r.json()))
-            .then(candyTypes => newState.candyTypes = candyTypes)
-            .then( () => fetch
-            ("http://localhost:5002/stores")
-            .then(r => r.json()))
-            .then(stores => newState.stores = stores)
+        CandyManager.getAll().then(candies => {
+            this.setState({candies: candies})})
+            .then(() => EmployeeManager.getAll())
+            .then(employees => {this.setState({employees: employees})})
+            .then(() => CandyTypeManager.getAll())
+            .then(candyTypes => {this.setState({candyTypes: candyTypes})})
+            .then(() => StoreManager.getAll())
+            .then(stores => {this.setState({stores: stores})})
             .then(() => this.setState(newState))
     }
     render() {
